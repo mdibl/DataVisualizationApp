@@ -1,0 +1,158 @@
+<html lang='en'>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #4459b8;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height {
+  height: 75%;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <a class="active" href="http://192.168.250.110/">Home</a>
+  <a href="http://192.168.250.110/about">About</a>
+  <a style = "float:right" href="http://192.168.250.110/troubleshooting">Troubleshooting</a>
+  <div class="dropdown">
+    <button class="dropbtn">Resources
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://mdibl.org/">MDIBL</a>
+      <a href="http://192.168.250.110/datadownlaod">Data Download</a>
+      <a href="http://192.168.250.110/literature">Literature</a>
+    </div>
+  </div>
+</div>
+</body>
+
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<form name="myform">
+ <input type="radio" name="option" id="Gene" checked="checked"> <span class="option">Gene</span>
+ <input type="radio" name="option" id="Sequence"> <span class="option">Sequence</span>
+</form>
+
+<div class="Gene">
+<div class="detail">Placholder</div>
+<form name=""Gene"" action="" method="POST">
+  <div>{{ form.gene.label }}: {{ form.gene }}</div>
+  <div>{{ form.upstream_buffer.label }}: {{ form.upstream_buffer }}</div>
+  <div>{{ form.downstream_buffer.label }}: {{ form.downstream_buffer }}</div>
+  <input type="submit" value="Search" class="button">
+</form>
+</div>
+
+<div class="Sequence">
+<div class="detail">Placholder</div>
+<form name=""Sequence"" action="" method="POST">
+  <div>{{ form.sequence.label }}: {{ form.sequence }}</div>
+  <div>{{ form.identifier.label }}: {{ form.identifier }}</div>
+  <input type="submit" value="Search" class="button">
+</form>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('.Sequence').hide();
+    $('#Sequence').click(function()
+    {
+    $('.Gene').slideUp('slow');
+    $('.Sequence').slideDown('slow');
+    });
+    $('#Gene').click(function()
+    {
+        $('.Sequence').slideUp('slow');
+        $('.Gene').slideDown('slow');
+    });
+});
+</script>
+
+<head>
+  <title>Figures</title>
+  <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.css" type="text/css" />
+  <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.js"></script>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="full-height">
+        {{ div | safe }}
+        {{ script | safe }}
+    </div>
+</body>
+
+</html>

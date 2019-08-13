@@ -1,0 +1,127 @@
+<html lang='en'>
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #4459b8;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height {
+  height: 100%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+  <a class="active" href="http://192.168.250.110/">Home</a>
+  <a href="http://192.168.250.110/about">About</a>
+  <a style = "float:right" href="http://192.168.250.110/troubleshooting">Troubleshooting</a>
+  <div class="dropdown">
+    <button class="dropbtn">Resources
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="https://mdibl.org/">MDIBL</a>
+      <a href="http://192.168.250.110/datadownlaod">Data Download</a>
+      <a href="http://192.168.250.110/literature">Literature</a>
+    </div>
+  </div>
+</div>
+</body>
+
+<form method=post action="">
+<table border="1">
+  <h2>Input Table</h2>
+  {% for field in form %}
+    <tr>
+    <td>{{ field.name }}</td><td>{{ field }}</td>
+    <td>{{ field.label }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<p><input type=submit value=Submit></form></p>
+
+<head>
+  <title>Figures</title>
+  <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.css" type="text/css" />
+  <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.js"></script>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="full-height">
+        {{ div | safe }}
+        {{ script | safe }}
+    </div>
+    <div class="full-height">
+        {{ div2 | safe }}
+        {{ script2 | safe }}
+    </div>
+</body>
+
+</html>
